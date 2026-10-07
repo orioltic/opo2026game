@@ -8,6 +8,7 @@
   let soundOn = false, audio, lastDamage = 0, flashUntil = 0, toastTimer, enemyLoop = null;
   let knowledge = 0, heldTimer = null, projectile = null, projectileFrame = 0;
   const bookMethods=cfg.bookMethods||['Aula Invertida','Gamificación','ABP','ApS','Juegos Serios'];
+  let readyBookMethod=bookMethods[Math.floor(Math.random()*bookMethods.length)];
   const orientationGate=$('#orientation-gate');
   const isMobileDevice=matchMedia('(pointer: coarse)').matches||navigator.maxTouchPoints>1;
   function syncOrientation(){
@@ -218,7 +219,8 @@
       while(delta>Math.PI)delta-=Math.PI*2;while(delta< -Math.PI)delta+=Math.PI*2;
       return{enemy:e,dist,delta};
     }).filter(item=>item.dist<5.5&&Math.abs(item.delta)<.20).sort((a,b)=>a.dist-b.dist)[0];
-    const method=bookMethods[Math.floor(Math.random()*bookMethods.length)];
+    const method=readyBookMethod;
+    readyBookMethod=bookMethods[Math.floor(Math.random()*bookMethods.length)];
     projectile={started:performance.now(),duration:360,target:target&&lineOfSight(target.enemy.x,target.enemy.y)?target.enemy:null,method};
     flashUntil=performance.now()+100;showToast(`LIBRO: ${method}`);beep(380);animateProjectile();
   }
@@ -281,7 +283,7 @@
     renderSprites(depth);
     // Retícula y libro preparado para salir volando.
     ctx.fillStyle='#fff6c7';ctx.fillRect(W/2-5,H/2,10,2);ctx.fillRect(W/2,H/2-5,2,10);
-    drawBookHands();
+    drawBookHands(readyBookMethod);
     if(projectile){
       const progress=Math.min(1,(performance.now()-projectile.started)/projectile.duration);
       const ease=progress*progress*(3-2*progress),size=22+ease*62,y=H*.76-ease*H*.52;
@@ -302,12 +304,12 @@
     pickups.filter(p=>!p.taken).forEach(p=>{m.fillStyle='#ffe66b';m.fillRect(ox+p.x*cell-2,oy+p.y*cell-2,4,4)});
     m.save();m.translate(ox+player.x*cell,oy+player.y*cell);m.rotate(player.angle);m.fillStyle='#fff';m.beginPath();m.moveTo(6,0);m.lineTo(-4,-3);m.lineTo(-4,3);m.closePath();m.fill();m.restore();
   }
-  function drawBookHands(){
+  function drawBookHands(method){
     // Brazos, puños y libro en perspectiva para que el gesto de lanzar se lea mejor.
     ctx.fillStyle='#151027';ctx.beginPath();ctx.moveTo(0,H);ctx.lineTo(0,H-34);ctx.lineTo(W*.22,H-64);ctx.lineTo(W*.34,H);ctx.fill();
     ctx.beginPath();ctx.moveTo(W,H);ctx.lineTo(W,H-34);ctx.lineTo(W*.78,H-64);ctx.lineTo(W*.66,H);ctx.fill();
     ctx.fillStyle='#dba27e';ctx.fillRect(W*.28,H-49,W*.12,32);ctx.fillRect(W*.60,H-49,W*.12,32);
-    drawFlyingBook(W/2,H-59,42,0);
+    drawFlyingBook(W/2,H-67,118,0,method);
   }
   function drawFlyingBook(x,y,size,angle,label=''){
     const covers={'Aula Invertida':'#1b6880','Gamificación':'#a52e70','ABP':'#607b2b','ApS':'#955a23','Juegos Serios':'#563c9c'};
