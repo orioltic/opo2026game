@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#100b25">
-  <title>Libros contra la desinformación</title>
+  <title>Motiva el aula</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,7 +16,7 @@
   </div>
   <main class="arcade">
     <header class="topbar">
-      <p class="logo">LIBROS CONTRA LA DESINFORMACIÓN</p>
+      <p class="logo">MOTIVA EL AULA</p>
       <button id="sound-toggle" class="utility-button" type="button" aria-pressed="false">♫ sonido apagado</button>
     </header>
     <section class="cabinet-screen" aria-live="polite">
@@ -27,27 +27,27 @@
           <div class="stars" aria-hidden="true">✦　　 ·　　　 ✦　　　·　✦</div>
           <div class="pixel-book" aria-hidden="true">▰</div>
           <div class="portrait-frame"><img id="player-portrait" src="assets/oriol.png" alt="Retrato pixelado del protagonista"></div>
-          <p class="subtitle">PRIMERA PERSONA // 24 BITS RGB</p>
+          <p class="subtitle">PRIMERA PERSONA // PIXELES A TODO COLOR</p>
         </div>
-        <h1>LIBROS CONTRA<br>LA DESINFORMACIÓN</h1>
-        <p class="instructions">Avanza. Lanza libros. Responde y recupera vacunas.</p>
+        <h1>MOTIVA<br>EL AULA</h1>
+        <p class="instructions">Avanza. Lanza libros. Despierta las ganas de aprender.</p>
         <button id="start-button" class="big-button" type="button">INICIAR PARTIDA</button>
-        <p class="controls-note">WASD/flechas o arrastra el ratón para mirar · Espacio o clic para lanzar libros</p>
+        <p class="controls-note">WASD/flechas o arrastra para mirar · Espacio o clic para lanzar libros</p>
       </section>
 
       <section id="play-screen" class="play-screen" hidden>
         <div class="hud">
           <div class="hero-hud"><img src="assets/oriol.png" alt=""><span>ORIOL</span></div>
-          <div><span class="hud-label">VACUNAS</span><strong id="vaccine-count">5 / 5</strong><span id="vaccine-pips" class="pips" aria-label="Vacunas disponibles"></span></div>
+          <div><span class="hud-label">ENERGÍA</span><strong id="energy-count">5 / 5</strong><span id="energy-pips" class="pips" aria-label="Energía disponible"></span></div>
           <div><span class="hud-label">FASE</span><strong id="level-name">HISTORIAL ACADÉMICO</strong></div>
-          <div><span class="hud-label">LECTORES</span><strong id="enemy-count">0 / 0</strong></div>
+          <div><span class="hud-label">MOTIVADOS</span><strong id="enemy-count">0 / 0</strong></div>
         </div>
         <div class="viewport-frame">
-          <canvas id="viewport" width="640" height="360" aria-label="Vista del laberinto en primera persona. Usa las teclas de movimiento y el botón para lanzar libros."></canvas>
+          <canvas id="viewport" width="640" height="360" aria-label="Vista del laberinto en primera persona. Motiva a los estudiantes lanzando libros con estrategias educativas."></canvas>
           <canvas id="minimap" class="minimap" width="132" height="108" aria-label="Mapa de la fase"></canvas>
-          <div id="toast" class="toast" role="status">Convierte a los negacionistas y encuentra la salida.</div>
+          <div id="toast" class="toast" role="status">Motiva a los estudiantes y encuentra la salida.</div>
           <div id="quiz-panel" class="quiz-panel" hidden>
-            <p class="eyebrow">CÁPSULA DE VACUNA</p>
+            <p class="eyebrow">CHISPA DE IDEAS</p>
             <h2 id="quiz-question"></h2>
             <div id="quiz-options" class="quiz-options"></div>
             <p id="quiz-result" role="status"></p>
@@ -74,7 +74,7 @@
         </div>
       </section>
     </section>
-    <footer><span>PIXEL QUEST // EDICIÓN EDUCATIVA</span><span>PARTIDA LOCAL</span></footer>
+    <footer><span>MOTIVA EL AULA // EDICIÓN EDUCATIVA</span><span>PARTIDA LOCAL</span></footer>
   </main>
   <script src="config.js"></script>
   <script src="game.js"></script>

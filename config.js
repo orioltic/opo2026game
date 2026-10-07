@@ -1,7 +1,8 @@
 // Todo el equilibrio, los textos y las rutas de PDF se pueden editar aquí.
 window.GAME_CONFIG = {
-  startingVaccines: 5,
-  maxVaccines: 5,
+  bookMethods: ["Aula Invertida", "Gamificación", "ABP", "ApS", "Juegos Serios"],
+  startingEnergy: 5,
+  maxEnergy: 5,
   questions: [
     { prompt: "¿Qué integra el modelo TPACK?", choices: ["Tecnología, pedagogía y contenido", "Evaluación, currículo y gestión", "Solo tecnología y contenido"], answer: 0 },
     { prompt: "¿Qué significa CK en TPACK?", choices: ["Conocimiento del contenido", "Conocimiento del contexto", "Conocimiento de la comunicación"], answer: 0 },
@@ -43,12 +44,12 @@ window.GAME_CONFIG = {
       pdf: "assets/pdf/PRUEBA_historial.pdf",
       palette: ["#24315e", "#4b75ba", "#68d6d0"],
       enemies: [
-        { x: 4.5, y: 1.5, type: "selfie", hits: 2 },
-        { x: 7.5, y: 1.5, type: "woman-selfie", hits: 2 },
-        { x: 7.5, y: 3.5, type: "car", hits: 3 },
-        { x: 3.5, y: 7.5, type: "woman-money", hits: 2 }
+        { x: 4.5, y: 1.5, type: "boy-short", hits: 2 },
+        { x: 7.5, y: 1.5, type: "girl-long", hits: 2 },
+        { x: 7.5, y: 3.5, type: "boy-curly", hits: 3 },
+        { x: 3.5, y: 7.5, type: "girl-short", hits: 2 }
       ],
-      vaccines: [{ x: 2.5, y: 3.5 }],
+      energyPickups: [{ x: 2.5, y: 3.5 }],
       exit: { x: 9.5, y: 7.5 }
     },
     {
@@ -71,16 +72,16 @@ window.GAME_CONFIG = {
         "111111111111111"
       ],
       enemies: [
-        { x: 3.5, y: 1.5, type: "muscle", hits: 3 },
-        { x: 11.5, y: 1.5, type: "woman-selfie", hits: 2 },
-        { x: 5.5, y: 3.5, type: "car", hits: 3 },
-        { x: 9.5, y: 3.5, type: "woman-car", hits: 3 },
-        { x: 2.5, y: 6.5, type: "money", hits: 2 },
-        { x: 12.5, y: 6.5, type: "woman-money", hits: 2 },
-        { x: 4.5, y: 11.5, type: "woman-muscle", hits: 3 },
-        { x: 10.5, y: 11.5, type: "selfie", hits: 2 }
+        { x: 3.5, y: 1.5, type: "boy-wavy", hits: 3 },
+        { x: 11.5, y: 1.5, type: "girl-long", hits: 2 },
+        { x: 5.5, y: 3.5, type: "boy-curly", hits: 3 },
+        { x: 9.5, y: 3.5, type: "girl-short", hits: 3 },
+        { x: 2.5, y: 6.5, type: "boy-short", hits: 2 },
+        { x: 12.5, y: 6.5, type: "girl-curly", hits: 2 },
+        { x: 4.5, y: 11.5, type: "girl-wavy", hits: 3 },
+        { x: 10.5, y: 11.5, type: "boy-short", hits: 2 }
       ],
-      vaccines: [{ x: 2.5, y: 3.5 }, { x: 12.5, y: 9.5 }],
+      energyPickups: [{ x: 2.5, y: 3.5 }, { x: 12.5, y: 9.5 }],
       exit: { x: 13.5, y: 11.5 }
     },
     {
@@ -88,18 +89,18 @@ window.GAME_CONFIG = {
       pdf: "assets/pdf/PRUEBA_proyecto-investigador.pdf",
       palette: ["#3a254e", "#9b4a7b", "#61dce1"],
       enemies: [
-        { x: 3.5, y: 1.5, type: "car", hits: 3 },
-        { x: 7.5, y: 1.5, type: "woman-selfie", hits: 2 },
-        { x: 2.5, y: 3.5, type: "woman-money", hits: 2 },
-        { x: 6.5, y: 3.5, type: "muscle", hits: 3 },
-        { x: 1.5, y: 5.5, type: "woman-car", hits: 3 },
-        { x: 3.5, y: 5.5, type: "selfie", hits: 2 },
-        { x: 5.5, y: 5.5, type: "woman-muscle", hits: 3 },
-        { x: 7.5, y: 5.5, type: "money", hits: 2 },
-        { x: 2.5, y: 7.5, type: "woman-selfie", hits: 2 },
-        { x: 6.5, y: 7.5, type: "car", hits: 3 }
+        { x: 3.5, y: 1.5, type: "boy-curly", hits: 3 },
+        { x: 7.5, y: 1.5, type: "girl-long", hits: 2 },
+        { x: 2.5, y: 3.5, type: "girl-short", hits: 2 },
+        { x: 6.5, y: 3.5, type: "boy-wavy", hits: 3 },
+        { x: 1.5, y: 5.5, type: "girl-curly", hits: 3 },
+        { x: 3.5, y: 5.5, type: "boy-short", hits: 2 },
+        { x: 5.5, y: 5.5, type: "girl-wavy", hits: 3 },
+        { x: 7.5, y: 5.5, type: "boy-long", hits: 2 },
+        { x: 2.5, y: 7.5, type: "girl-long", hits: 2 },
+        { x: 6.5, y: 7.5, type: "boy-curly", hits: 3 }
       ],
-      vaccines: [{ x: 5.5, y: 3.5 }, { x: 4.5, y: 7.5 }, { x: 9.5, y: 5.5 }],
+      energyPickups: [{ x: 5.5, y: 3.5 }, { x: 4.5, y: 7.5 }, { x: 9.5, y: 5.5 }],
       exit: { x: 9.5, y: 7.5 }
     }
   ]

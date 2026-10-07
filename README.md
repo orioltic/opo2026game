@@ -1,6 +1,6 @@
-# Libros contra la desinformación
+# Motiva el aula
 
-Prototipo web estático en HTML, CSS y JavaScript, con perspectiva en primera persona, paleta RGB de 24 bits y sprites retro de alta resolución. No usa motor de videojuegos, PHP, servidor de juego, cuentas ni servicios externos.
+Juego web estático en HTML, CSS y JavaScript, con laberinto en primera persona inspirado en Doom y gráficos retro a todo color. Los libros muestran al azar una estrategia: Aula Invertida, Gamificación, ABP, ApS o Juegos Serios. El mismo libro motiva a cualquier estudiante.
 
 ## Probar en local
 
@@ -14,21 +14,21 @@ Abre `http://localhost:8000`. Detén el servidor con `Ctrl+C`.
 
 ## Jugar
 
-- Muévete con WASD o las flechas; también puedes arrastrar el ratón para girar. En pantalla táctil, mantén pulsadas las flechas del mando.
-- En móviles, gira el dispositivo a horizontal para poder jugar. Al iniciar, el navegador intentará activar pantalla completa y bloquear la orientación si lo admite.
-- Lanza libros con la barra espaciadora, un clic en la escena o el botón «Lanzar libro». Cada rival necesita dos o tres impactos; el contador sobre él muestra los restantes.
-- Empiezas con cinco vacunas. El contacto con un rival no transformado resta una. Tocar una cápsula abre una pregunta; solo un acierto recupera una vacuna, hasta el máximo de cinco.
-- Convierte a todos los rivales, llega a la salida y responde correctamente una pregunta para superar la fase.
-- La fase 1 tiene cuatro rivales y una jeringuilla; la fase 2, ocho rivales y dos jeringuillas; la fase 3, diez rivales y tres jeringuillas.
+- Muévete con WASD o las flechas; en móvil, gira el teléfono a horizontal y usa el mando táctil de la izquierda y el botón de lanzar de la derecha.
+- Lanza libros con la barra espaciadora, un clic en la escena o el botón «Lanzar libro». Cada lanzamiento elige una estrategia al azar. Cada estudiante requiere dos o tres impactos.
+- Empiezas con cinco unidades de energía. El contacto con un estudiante desmotivado resta una unidad.
+- Recoge las chispas de energía y responde la pregunta para recuperarla. Las respuestas incorrectas no dan energía.
+- Motiva a todo el grupo, llega a la salida y responde correctamente para superar la fase.
+- La fase 1 incluye cuatro estudiantes y una chispa; la fase 2, ocho estudiantes y dos chispas; la fase 3, diez estudiantes y tres chispas.
 
-Las tres fases desbloquean, por orden, el historial académico, el proyecto docente y el proyecto investigador.
+Las fases desbloquean, en este orden, los PDF del historial académico, el proyecto docente y el proyecto investigador.
 
-## Sustituir la foto y los documentos
+## Cambiar estudiantes, preguntas y estrategias
 
-Reemplaza `assets/oriol.png` para cambiar el retrato pixelado, o modifica las rutas de imagen en `index.html`.
+`config.js` concentra las estrategias de los libros, el máximo y la energía inicial, las preguntas, los mapas, los personajes y las rutas de los PDF. Cada personaje se configura con género y tipo de pelo. Los sprites muestran una postura decaída al inicio y expresión alegre, mirada frontal y salto al motivarse.
 
-Los PDF actuales son documentos de prueba identificados como tales. Reemplázalos por los definitivos conservando esos nombres, o cambia las rutas `pdf` en `config.js`. El mismo archivo concentra las vacunas iniciales y máximas, la batería de preguntas, los mapas, enemigos y cápsulas de cada fase.
+## Sustituir foto y documentos
 
-La batería de preguntas cubre TPACK y el MRCDD. Se mezclan tanto las preguntas como el orden de sus respuestas. INTEF indica que la actualización de 2022 es el marco vigente y recoge seis áreas y 23 competencias. [INTEF: competencia digital docente](https://intef.es/competencia-digital-educativa/competencia-digital-docente/) · [MRCDD actualizado](https://intef.es/wp-content/uploads/2023/05/MRCDD_GTTA_2022.pdf) · [Mishra y Koehler: TPACK](https://journals.sagepub.com/doi/abs/10.1111/j.1467-9620.2006.00684.x).
+Reemplaza `assets/oriol.png` para cambiar el retrato pixelado. Los PDF actuales son documentos de prueba identificados como tales. Sustitúyelos conservando sus nombres o modifica sus rutas `pdf` en `config.js`.
 
-Todas las rutas son relativas. Puedes alojar la carpeta en un servidor con PHP o en un servicio estático. El prototipo no se publica desde este proyecto.
+Todas las rutas son relativas. La carpeta puede alojarse en un servidor con PHP o en un servicio de hosting estático; el juego no necesita PHP, base de datos, cuentas ni dependencias externas.
