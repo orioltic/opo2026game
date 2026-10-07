@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#100b25">
+  <title>Libros contra la desinformación</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="orientation-gate" class="orientation-gate" hidden role="status" aria-live="polite">
+    <div class="phone-turn" aria-hidden="true"><span></span><b>↻</b></div>
+    <h1>GIRA EL MÓVIL</h1>
+    <p>Este juego se juega en horizontal.</p>
+    <small>La partida seguirá bloqueada hasta que gires el dispositivo.</small>
+  </div>
+  <main class="arcade">
+    <header class="topbar">
+      <p class="logo">LIBROS CONTRA LA DESINFORMACIÓN</p>
+      <button id="sound-toggle" class="utility-button" type="button" aria-pressed="false">♫ sonido apagado</button>
+    </header>
+    <section class="cabinet-screen" aria-live="polite">
+      <div class="screen-bar"><span id="screen-label">PANTALLA DE CARGA</span><span class="spark">◆ ◆ ◆</span></div>
+
+      <section id="start-screen" class="start-screen">
+        <div class="title-art">
+          <div class="stars" aria-hidden="true">✦　　 ·　　　 ✦　　　·　✦</div>
+          <div class="pixel-book" aria-hidden="true">▰</div>
+          <div class="portrait-frame"><img id="player-portrait" src="assets/oriol.png" alt="Retrato pixelado del protagonista"></div>
+          <p class="subtitle">PRIMERA PERSONA // 24 BITS RGB</p>
+        </div>
+        <h1>LIBROS CONTRA<br>LA DESINFORMACIÓN</h1>
+        <p class="instructions">Avanza. Lanza libros. Responde y recupera vacunas.</p>
+        <button id="start-button" class="big-button" type="button">INICIAR PARTIDA</button>
+        <p class="controls-note">WASD/flechas o arrastra el ratón para mirar · Espacio o clic para lanzar libros</p>
+      </section>
+
+      <section id="play-screen" class="play-screen" hidden>
+        <div class="hud">
+          <div class="hero-hud"><img src="assets/oriol.png" alt=""><span>ORIOL</span></div>
+          <div><span class="hud-label">VACUNAS</span><strong id="vaccine-count">5 / 5</strong><span id="vaccine-pips" class="pips" aria-label="Vacunas disponibles"></span></div>
+          <div><span class="hud-label">FASE</span><strong id="level-name">HISTORIAL ACADÉMICO</strong></div>
+          <div><span class="hud-label">LECTORES</span><strong id="enemy-count">0 / 0</strong></div>
+        </div>
+        <div class="viewport-frame">
+          <canvas id="viewport" width="640" height="360" aria-label="Vista del laberinto en primera persona. Usa las teclas de movimiento y el botón para lanzar libros."></canvas>
+          <canvas id="minimap" class="minimap" width="132" height="108" aria-label="Mapa de la fase"></canvas>
+          <div id="toast" class="toast" role="status">Convierte a los negacionistas y encuentra la salida.</div>
+          <div id="quiz-panel" class="quiz-panel" hidden>
+            <p class="eyebrow">CÁPSULA DE VACUNA</p>
+            <h2 id="quiz-question"></h2>
+            <div id="quiz-options" class="quiz-options"></div>
+            <p id="quiz-result" role="status"></p>
+            <button id="quiz-continue" class="big-button" type="button" hidden>CONTINUAR</button>
+          </div>
+          <div id="end-panel" class="end-panel" hidden>
+            <p id="end-eyebrow" class="eyebrow"></p>
+            <h2 id="end-title"></h2>
+            <p id="end-message"></p>
+            <button id="download-pdf" class="big-button" type="button">DESCARGAR PDF DESBLOQUEADO</button>
+            <button id="continue-button" class="utility-button" type="button">SIGUIENTE FASE</button>
+            <button id="retry-button" class="utility-button" type="button" hidden>REINTENTAR FASE</button>
+          </div>
+        </div>
+        <div class="touch-controls" aria-label="Controles táctiles">
+          <div class="dpad">
+            <button data-move="forward" aria-label="Avanzar">▲</button>
+            <button data-move="left" aria-label="Girar a la izquierda">◀</button>
+            <button data-move="back" aria-label="Retroceder">▼</button>
+            <button data-move="right" aria-label="Girar a la derecha">▶</button>
+          </div>
+          <button id="fire-button" class="fire-button" type="button">LANZAR<br>LIBRO</button>
+          <p>WASD/flechas o arrastra el ratón para mirar · barra espaciadora o clic para lanzar.</p>
+        </div>
+      </section>
+    </section>
+    <footer><span>PIXEL QUEST // EDICIÓN EDUCATIVA</span><span>PARTIDA LOCAL</span></footer>
+  </main>
+  <script src="config.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
