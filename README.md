@@ -17,7 +17,7 @@ Abre `http://localhost:8000`. Detén el servidor con `Ctrl+C`.
 - Muévete con WASD o las flechas; en móvil, gira el teléfono a horizontal y usa el mando táctil de la izquierda y el botón de lanzar de la derecha.
 - Lanza libros con la barra espaciadora, un clic en la escena o el botón «Lanzar libro». Cada lanzamiento elige una estrategia al azar. Cada estudiante requiere dos o tres impactos.
 - Empiezas con cinco unidades de energía. El contacto con un estudiante desmotivado resta una unidad.
-- Recoge las chispas de energía y responde la pregunta para recuperarla. Las respuestas incorrectas no dan energía.
+- Recoge estrellas y responde la pregunta para ganar un punto de valoración docente. Las respuestas incorrectas no suman puntos.
 - Motiva a todo el grupo, llega a la salida y responde correctamente para superar la fase.
 - La fase 1 incluye cuatro estudiantes y una chispa; la fase 2, ocho estudiantes y dos chispas; la fase 3, diez estudiantes y tres chispas.
 

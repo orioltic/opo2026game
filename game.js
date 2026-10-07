@@ -54,7 +54,7 @@
   function updateHud(){
     $('#energy-count').textContent=`${energy} / ${cfg.maxEnergy}`;
     $('#energy-pips').textContent='● '.repeat(energy);
-    $('#energy-pips').setAttribute('aria-label',`${energy} unidades de energía`);
+    $('#energy-pips').setAttribute('aria-label',`${energy} puntos de valoración docente`);
     $('#level-name').textContent=activeLevel().title.toUpperCase();
     const turned=enemies.filter(enemy=>enemy.reading).length;
     $('#enemy-count').textContent=`${turned} / ${enemies.length}`;
@@ -144,7 +144,7 @@
     quizMode=mode;
     if(questionIndex>=questionOrder.length){questionOrder=cfg.questions.map((_,i)=>i).sort(()=>Math.random()-.5);questionIndex=0}
     const question=cfg.questions[questionOrder[questionIndex++]];
-    $('#quiz-panel').querySelector('.eyebrow').textContent=mode==='exit'?'PREGUNTA PARA ABRIR LA SALIDA':'CHISPA DE IDEAS';
+    $('#quiz-panel').querySelector('.eyebrow').textContent=mode==='exit'?'PREGUNTA PARA ABRIR LA SALIDA':'ESTRELLA DE VALORACIÓN';
     $('#quiz-question').textContent=question.prompt;$('#quiz-result').textContent='';$('#quiz-continue').hidden=true;
     const options=$('#quiz-options');options.replaceChildren();
     const choices=question.choices.map((text,index)=>({text,correct:index===question.answer})).sort(()=>Math.random()-.5);
@@ -161,11 +161,11 @@
             $('#quiz-panel').hidden=true;activePickup=null;completeLevel();return;
           }
           const gained=energy<cfg.maxEnergy;energy=Math.min(cfg.maxEnergy,energy+1);
-          $('#quiz-result').textContent=gained?'¡Correcto! Recuperas una unidad de energía.':'¡Correcto! Tu energía ya está al máximo.';
+          $('#quiz-result').textContent=gained?'¡Correcto! Ganas un punto de valoración docente.':'¡Correcto! Ya tienes el máximo de valoraciones docentes.';
           beep(760);
         }else{
           button.classList.add('incorrect');options.children[correctPosition].classList.add('correct');
-          $('#quiz-result').textContent=quizMode==='exit'?'No es correcta. Responde otra pregunta para abrir la salida.':'Respuesta incorrecta: no recuperas energía.';
+          $('#quiz-result').textContent=quizMode==='exit'?'No es correcta. Responde otra pregunta para abrir la salida.':'Respuesta incorrecta: no ganas el punto de valoración.';
         }
         updateHud();$('#quiz-continue').textContent=quizMode==='exit'?'OTRA PREGUNTA':'CONTINUAR';$('#quiz-continue').hidden=false;
       });
@@ -220,7 +220,7 @@
     }).filter(item=>item.dist<5.5&&Math.abs(item.delta)<.20).sort((a,b)=>a.dist-b.dist)[0];
     const method=bookMethods[Math.floor(Math.random()*bookMethods.length)];
     projectile={started:performance.now(),duration:360,target:target&&lineOfSight(target.enemy.x,target.enemy.y)?target.enemy:null,method};
-    flashUntil=performance.now()+100;showToast(`¡${method}!`);beep(380);animateProjectile();
+    flashUntil=performance.now()+100;showToast(`LIBRO: ${method}`);beep(380);animateProjectile();
   }
   function animateProjectile(){
     if(!projectile)return;
@@ -284,7 +284,7 @@
     drawBookHands();
     if(projectile){
       const progress=Math.min(1,(performance.now()-projectile.started)/projectile.duration);
-      const ease=progress*progress*(3-2*progress),size=15+ease*47,y=H*.78-ease*H*.54;
+      const ease=progress*progress*(3-2*progress),size=22+ease*62,y=H*.76-ease*H*.52;
       drawFlyingBook(W/2+(Math.sin(ease*Math.PI)*28),y,size,Math.sin(ease*Math.PI*3)*.35,projectile.method);
     }
     if(performance.now()<flashUntil){ctx.fillStyle='#fff1bd';ctx.fillRect(W/2-8,H/2-32,16,18);ctx.fillStyle='#df4d8c';ctx.fillRect(W/2-7,H/2-31,14,15)}
