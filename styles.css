@@ -87,7 +87,6 @@ button, a.big-button { cursor: pointer; touch-action: manipulation; }
 .pixel-book::after { content: ""; position: absolute; inset: 22% 18% 31% 25%; border-block: 3px double #ffe2a2; }
 .subtitle { position: absolute; inset: auto 0 0; margin: 0; padding: 4px; background: #0c111ddd; color: var(--cyan); font-size: .66rem; }
 .start-screen h1 { margin: .55em 0 .2em; font-size: clamp(1.7rem, 6vw, 3.4rem); line-height: 1; color: var(--yellow); text-shadow: 3px 3px #74465a; }
-.start-screen h1 br { display: none; }
 .instructions { margin: .75em 0; }
 .controls-note, .touch-controls p { color: #c3cde0; font-size: .82rem; }
 .play-screen { position: relative; min-width: 0; }

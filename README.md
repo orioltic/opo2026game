@@ -1,4 +1,4 @@
-# Motiva el aula
+# Motivando con OriolTIC
 
 Juego web estático en HTML, CSS y JavaScript, con laberinto en primera persona inspirado en Doom y gráficos retro a todo color. Los libros muestran al azar una estrategia: Aula Invertida, Gamificación, ABP, ApS o Juegos Serios. El mismo libro motiva a cualquier estudiante.
 

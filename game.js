@@ -251,7 +251,7 @@
       .sort((a,b)=>a.dist-b.dist)[0];
     const method=readyBookMethod;
     readyBookMethod=bookMethods[Math.floor(Math.random()*bookMethods.length)];
-    projectile={elapsed:0,duration:360,target:target?.enemy,method};
+    projectile={elapsed:0,duration:600,target:target?.enemy,method};
     showToast(`LIBRO: ${method}`);beep(380);render();
   }
   function finishProjectile(){
@@ -394,9 +394,10 @@
     ctx.fillStyle='#fff6c7';ctx.fillRect(W/2-5,H/2,10,2);ctx.fillRect(W/2,H/2-5,2,10);
     if(projectile){
       const progress=projectile.elapsed/projectile.duration;
-      const y=(H-72)*(1-progress)+horizon*progress-Math.sin(progress*Math.PI)*24;
-      drawFlyingBook(W/2+Math.sin(progress*Math.PI)*21,y,152-124*progress,Math.sin(progress*Math.PI)*.3,projectile.method);
-    }else drawBookHands(readyBookMethod);
+      const arc=Math.sin(progress*Math.PI);
+      const y=(H-72)*(1-progress)+horizon*progress-arc*27;
+      drawBookCover(W/2+arc*14,y,152-40*progress,arc*.09,projectile.method);
+    }else drawHeldBook(readyBookMethod);
     if(performance.now()<lastDamage+180){ctx.fillStyle='#ff273333';ctx.fillRect(0,0,W,H)}
     drawMiniMap();
   }
@@ -411,21 +412,37 @@
     pickups.filter(p=>!p.taken).forEach(p=>{m.fillStyle='#ffe66b';m.fillRect(ox+p.x*cell-2,oy+p.y*cell-2,4,4)});
     m.save();m.translate(ox+player.x*cell,oy+player.y*cell);m.rotate(player.angle);m.fillStyle='#fff';m.beginPath();m.moveTo(6,0);m.lineTo(-4,-3);m.lineTo(-4,3);m.closePath();m.fill();m.restore();
   }
-  function drawBookHands(method){
+  function drawHeldBook(method){
+    drawBookCover(W/2,H-72,152,0,method);
     for(const side of [-1,1]){
-      ctx.save();ctx.translate(W/2,H);ctx.scale(side,1);
-      ctx.fillStyle='#141b2d';ctx.beginPath();ctx.moveTo(84,0);ctx.lineTo(87,-29);
-      ctx.lineTo(149,-19);ctx.lineTo(192,0);ctx.fill();
-      ctx.fillStyle='#384b64';ctx.fillRect(87,-25,48,9);
-      ctx.fillStyle='#647890';ctx.fillRect(87,-25,15,14);
-      ctx.fillStyle='#a46752';ctx.fillRect(68,-44,25,24);
-      ctx.fillStyle='#dfab82';ctx.fillRect(69,-46,24,18);
-      ctx.fillStyle='#f2c29a';ctx.fillRect(69,-46,16,5);
+      ctx.save();
+      ctx.translate(W/2+(side===1?-7:0),H);
+      ctx.scale(side,1);
+      ctx.fillStyle='#182234';
+      ctx.beginPath();ctx.moveTo(80,-36);ctx.lineTo(103,-37);
+      ctx.lineTo(145,0);ctx.lineTo(100,0);ctx.closePath();ctx.fill();
+      ctx.fillStyle='#516582';
+      ctx.beginPath();ctx.moveTo(78,-38);ctx.lineTo(97,-43);
+      ctx.lineTo(106,-31);ctx.lineTo(88,-22);ctx.closePath();ctx.fill();
+      ctx.fillStyle='#9c5c4b';
+      ctx.beginPath();ctx.moveTo(62,-62);ctx.lineTo(75,-65);
+      ctx.lineTo(87,-57);ctx.lineTo(95,-42);ctx.lineTo(82,-31);
+      ctx.lineTo(64,-39);ctx.lineTo(59,-50);ctx.closePath();ctx.fill();
+      ctx.fillStyle='#d69672';
+      ctx.beginPath();ctx.moveTo(64,-61);ctx.lineTo(75,-62);
+      ctx.lineTo(84,-55);ctx.lineTo(91,-43);ctx.lineTo(81,-36);
+      ctx.lineTo(67,-43);ctx.lineTo(62,-51);ctx.closePath();ctx.fill();
+      ctx.fillStyle='#f0bc91';
+      ctx.beginPath();ctx.moveTo(78,-49);ctx.lineTo(65,-53);
+      ctx.lineTo(59,-59);ctx.lineTo(54,-57);ctx.lineTo(55,-51);
+      ctx.lineTo(64,-43);ctx.lineTo(75,-41);ctx.closePath();ctx.fill();
+      ctx.strokeStyle='#9c5c4b';ctx.lineWidth=2;
+      ctx.beginPath();ctx.moveTo(73,-60);ctx.lineTo(76,-55);
+      ctx.moveTo(79,-58);ctx.lineTo(82,-53);ctx.stroke();
       ctx.restore();
     }
-    drawFlyingBook(W/2,H-72,152,0,method);
   }
-  function drawFlyingBook(x,y,size,angle,label=''){
+  function drawBookCover(x,y,size,angle,label){
     const covers={'Aula Invertida':'#235b77','Gamificación':'#8e345d','ABP':'#48613b','ApS':'#824828','Juegos Serios':'#503e85'};
     const lines=label==='Aula Invertida'?['Aula','Invertida']:label==='Juegos Serios'?['Juegos','Serios']:[label];
     ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.imageSmoothingEnabled=true;
@@ -437,9 +454,9 @@
     ctx.strokeStyle='#ffd68c';ctx.lineWidth=Math.max(1,size*.012);
     ctx.strokeRect(-size*.36,-size*.24,size*.74,size*.44);
     ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#fff8e8';
-    ctx.font=`bold ${Math.max(4,size*.125)}px "Courier New", monospace`;
-    const lineHeight=Math.max(5,size*.15),startY=-((lines.length-1)*lineHeight)/2;
-    lines.forEach((line,index)=>ctx.fillText(line,0,startY+index*lineHeight,size*.74));
+    ctx.font=`bold ${Math.round(size*.16)}px Arial, sans-serif`;
+    const lineHeight=size*.17,startY=-((lines.length-1)*lineHeight)/2;
+    lines.forEach((line,index)=>ctx.fillText(line,size*.01,startY+index*lineHeight,size*.68));
     ctx.restore();
   }
   function createEnemySprite(type,reading,variantIndex=0){
