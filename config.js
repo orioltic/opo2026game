@@ -41,7 +41,7 @@ window.GAME_CONFIG = {
   levels: [
     {
       title: "Historial académico",
-      pdf: "assets/pdf/PRUEBA_historial.pdf",
+      pdf: "https://orioltic.com/opo2026/historial_acad%c3%a9mico_OriolBorrasGene.pdf",
       palette: ["#24315e", "#4b75ba", "#68d6d0"],
       enemies: [
         { x: 4.5, y: 1.5, type: "boy-short", hits: 2 },
@@ -54,7 +54,7 @@ window.GAME_CONFIG = {
     },
     {
       title: "Proyecto docente",
-      pdf: "assets/pdf/PRUEBA_proyecto-docente.pdf",
+      pdf: "https://orioltic.com/opo2026/ProyectoDocente_OriolBorrasGene.pdf",
       palette: ["#4b2d24", "#c27c40", "#f5c85c"],
       maze: [
         "111111111111111",
@@ -86,7 +86,7 @@ window.GAME_CONFIG = {
     },
     {
       title: "Proyecto investigador",
-      pdf: "assets/pdf/PRUEBA_proyecto-investigador.pdf",
+      pdf: "https://orioltic.com/opo2026/ProyectoInvestigador_OriolBorrasGene.pdf",
       palette: ["#3a254e", "#9b4a7b", "#61dce1"],
       enemies: [
         { x: 3.5, y: 1.5, type: "boy-curly", hits: 3 },

@@ -2,9 +2,10 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#100b25">
   <title>Motiva el aula</title>
+  <link rel="icon" href="assets/oriol.png" type="image/png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,14 +13,13 @@
     <div class="phone-turn" aria-hidden="true"><span></span><b>↻</b></div>
     <h1>GIRA EL MÓVIL</h1>
     <p>Este juego se juega en horizontal.</p>
-    <small>La partida seguirá bloqueada hasta que gires el dispositivo.</small>
   </div>
   <main class="arcade">
     <header class="topbar">
       <p class="logo">MOTIVA EL AULA</p>
       <button id="sound-toggle" class="utility-button" type="button" aria-pressed="false">♫ sonido apagado</button>
     </header>
-    <section class="cabinet-screen" aria-live="polite">
+    <section class="cabinet-screen">
       <div class="screen-bar"><span id="screen-label">PANTALLA DE CARGA</span><span class="spark">◆ ◆ ◆</span></div>
 
       <section id="start-screen" class="start-screen">
@@ -43,24 +43,24 @@
           <div><span class="hud-label">MOTIVADOS</span><strong id="enemy-count">0 / 0</strong></div>
         </div>
         <div class="viewport-frame">
-          <canvas id="viewport" width="640" height="360" aria-label="Vista del laberinto en primera persona. Motiva a los estudiantes lanzando libros con estrategias educativas."></canvas>
+          <canvas id="viewport" width="640" height="360" tabindex="0" aria-label="Laberinto en primera persona"></canvas>
           <canvas id="minimap" class="minimap" width="132" height="108" aria-label="Mapa de la fase"></canvas>
           <div id="toast" class="toast" role="status">Motiva a los estudiantes y encuentra la salida.</div>
-          <div id="quiz-panel" class="quiz-panel" hidden>
-            <p class="eyebrow">CHISPA DE IDEAS</p>
-            <h2 id="quiz-question"></h2>
-            <div id="quiz-options" class="quiz-options"></div>
-            <p id="quiz-result" role="status"></p>
-            <button id="quiz-continue" class="big-button" type="button" hidden>CONTINUAR</button>
-          </div>
-          <div id="end-panel" class="end-panel" hidden>
-            <p id="end-eyebrow" class="eyebrow"></p>
-            <h2 id="end-title"></h2>
-            <p id="end-message"></p>
-            <button id="download-pdf" class="big-button" type="button">DESCARGAR PDF DESBLOQUEADO</button>
-            <button id="continue-button" class="utility-button" type="button">SIGUIENTE FASE</button>
-            <button id="retry-button" class="utility-button" type="button" hidden>REINTENTAR FASE</button>
-          </div>
+        </div>
+        <div id="quiz-panel" class="quiz-panel" role="region" aria-labelledby="quiz-question" hidden>
+          <p class="eyebrow"></p>
+          <h2 id="quiz-question"></h2>
+          <div id="quiz-options" class="quiz-options"></div>
+          <p id="quiz-result" role="status"></p>
+          <button id="quiz-continue" class="big-button" type="button" hidden>CONTINUAR</button>
+        </div>
+        <div id="end-panel" class="end-panel" role="region" aria-labelledby="end-title" hidden>
+          <p id="end-eyebrow" class="eyebrow"></p>
+          <h2 id="end-title"></h2>
+          <p id="end-message"></p>
+          <a id="download-pdf" class="big-button" target="_blank" rel="noopener">ABRIR PDF</a>
+          <button id="continue-button" class="utility-button" type="button">SIGUIENTE FASE</button>
+          <button id="retry-button" class="utility-button" type="button" hidden>REINTENTAR FASE</button>
         </div>
         <div class="touch-controls" aria-label="Controles táctiles">
           <div class="dpad">
